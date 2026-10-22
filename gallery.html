@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haute Couture &amp; Coronation Gallery | IndieVogues - Miss &amp; Mrs. World India</title>
+    <meta name="description" content="Explore official high-fashion runway galleries, national coronation moments, and visual archives of IndieVogues Miss & Mrs. World India pageants.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/luxury-tokens.css">
+    <style>
+        :root {
+            --bg-midnight: #07090E;
+            --bg-card: rgba(18, 22, 32, 0.85);
+            --gold-light: #FFF2C8;
+            --gold-primary: #E5C058;
+            --gold-gradient: linear-gradient(135deg, #FFF6D8 0%, #F5D377 25%, #E5C058 55%, #B8860B 85%, #8C6202 100%);
+            --gold-border: rgba(229, 192, 88, 0.35);
+            --gold-glow: 0 0 25px rgba(229, 192, 88, 0.28);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-midnight);
+            color: #F1F5F9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .ambient-aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 750px;
+            background: 
+                radial-gradient(ellipse 60% 40% at 50% -10%, rgba(229, 192, 88, 0.15) 0%, transparent 70%),
+                radial-gradient(circle 350px at 15% 20%, rgba(184, 134, 11, 0.08) 0%, transparent 60%),
+                radial-gradient(circle 350px at 85% 25%, rgba(229, 192, 88, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Top Announcement Ticker */
+        .pageant-ticker {
+            background: linear-gradient(90deg, #090B10 0%, #151822 50%, #090B10 100%);
+            border-bottom: 1px solid rgba(229, 192, 88, 0.25);
+            padding: 9px 16px;
+            position: relative;
+            z-index: 1001;
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--gold-light);
+            text-align: center;
+        }
+        .ticker-pill {
+            background: var(--gold-gradient);
+            color: #07090E;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 9, 14, 0.94);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(229, 192, 88, 0.3);
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .brand-logo-wrap { position: relative; }
+        .brand-logo-wrap img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold-primary);
+            box-shadow: 0 0 16px rgba(229, 192, 88, 0.35);
+            display: block;
+            object-fit: cover;
+        }
+        .brand-crown-icon {
+            position: absolute;
+            top: -9px;
+            right: -6px;
+            font-size: 0.9rem;
+            filter: drop-shadow(0 0 4px #E5C058);
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            letter-spacing: 0.14em;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            line-height: 1.1;
+        }
+        .brand-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        nav a {
+            color: #E2E8F0;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            position: relative;
+            padding: 6px 0;
+            transition: color 0.25s ease;
+        }
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: width 0.3s ease;
+        }
+        nav a:hover, nav a.active { color: var(--gold-light); }
+        nav a:hover:after, nav a.active:after { width: 100%; }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 1px solid rgba(229, 192, 88, 0.4);
+            color: var(--gold-primary);
+            font-size: 1.3rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn-pageant-gold {
+            background: var(--gold-gradient);
+            color: #07090E;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(229, 192, 88, 0.35);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-pageant-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(229, 192, 88, 0.6);
+            color: #000;
+        }
+        .btn-pageant-glass {
+            background: rgba(22, 26, 36, 0.6);
+            border: 1.5px solid rgba(229, 192, 88, 0.4);
+            color: #FFFFFF;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-pageant-glass:hover {
+            background: rgba(229, 192, 88, 0.15);
+            border-color: #FFF1C5;
+            color: #FFF1C5;
+        }
+
+        /* Mobile Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100vh;
+            background: #0B0E17;
+            border-left: 1px solid rgba(229, 192, 88, 0.3);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 24px;
+            gap: 20px;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.9);
+            transition: right 0.4s ease;
+        }
+        .mobile-drawer.open { right: 0; }
+        .drawer-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .mobile-drawer a {
+            color: #F1F5F9;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .mobile-drawer a:hover { color: var(--gold-light); }
+
+        /* Hero Banner */
+        .gallery-hero {
+            padding: 90px 24px 45px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 192, 88, 0.1);
+            border: 1px solid rgba(229, 192, 88, 0.35);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+        }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            color: #FFFFFF;
+            line-height: 1.18;
+        }
+        .hero-title span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            max-width: 760px;
+            margin: 0 auto 36px;
+            color: #CBD5E1;
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+
+        /* Stats Bar */
+        .gallery-stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 36px;
+            padding: 22px 32px;
+            background: rgba(22, 26, 36, 0.65);
+            border: 1px solid rgba(229, 192, 88, 0.25);
+            border-radius: 12px;
+            max-width: 960px;
+            margin: 0 auto 50px;
+            backdrop-filter: blur(12px);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #94A3B8;
+            margin-top: 4px;
+        }
+
+        /* Filter navigation */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0 auto 46px;
+            max-width: 1050px;
+            position: relative;
+            z-index: 2;
+        }
+        .filter-btn {
+            background: #151924;
+            border: 1.5px solid rgba(229, 192, 88, 0.35);
+            color: #FFFFFF;
+            padding: 12px 26px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-btn:hover {
+            border-color: #FFF1C5;
+            background: rgba(229, 192, 88, 0.15);
+            color: #FFF1C5;
+            transform: translateY(-2px);
+        }
+        .filter-btn.active {
+            background: var(--gold-gradient);
+            color: #07090E;
+            border-color: #FFF1C5;
+            box-shadow: 0 4px 22px rgba(229, 192, 88, 0.45);
+        }
+
+        /* Masonry Grid */
+        .gallery-container {
+            max-width: 1360px;
+            margin: 0 auto 90px;
+            padding: 0 24px;
+            column-count: 3;
+            column-gap: 26px;
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 980px) { .gallery-container { column-count: 2; } }
+        @media (max-width: 640px) { .gallery-container { column-count: 1; } }
+
+        .gallery-card {
+            break-inside: avoid;
+            margin-bottom: 26px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #141822;
+            border: 1.5px solid rgba(229, 192, 88, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+        }
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 241, 197, 0.9);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(229, 192, 88, 0.35);
+        }
+        .gallery-card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Luxury Overlay */
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(7, 9, 14, 0.1) 0%, rgba(7, 9, 14, 0.4) 40%, rgba(7, 9, 14, 0.96) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            transform: translateY(10px);
+        }
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .overlay-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .overlay-category {
+            font-size: 0.72rem;
+            color: #07090E;
+            background: var(--gold-gradient);
+            padding: 3px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 800;
+        }
+        .overlay-edition {
+            font-size: 0.78rem;
+            color: var(--gold-light);
+            letter-spacing: 0.12em;
+        }
+        .overlay-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .overlay-caption {
+            font-size: 0.85rem;
+            color: #CBD5E1;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .overlay-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        /* Video Showcase Section */
+        .video-showcase-section {
+            max-width: 1360px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .section-tag {
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+        }
+        .video-card {
+            background: linear-gradient(145deg, #151926 0%, #0E121C 100%);
+            border: 1.5px solid rgba(229, 192, 88, 0.35);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 16px 45px rgba(0,0,0,0.8);
+            transition: all 0.35s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 241, 197, 0.8);
+            box-shadow: 0 22px 55px rgba(0,0,0,0.95), var(--gold-glow);
+        }
+        .video-thumbnail-wrap {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-thumbnail-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: transform 0.5s ease;
+        }
+        .video-card:hover .video-thumbnail-wrap img {
+            transform: scale(1.05);
+            opacity: 0.95;
+        }
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            color: #07090E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 0 25px rgba(229, 192, 88, 0.7);
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+        .video-card:hover .video-play-btn {
+            transform: translate(-50%, -50%) scale(1.12);
+        }
+        .video-duration {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(7, 9, 14, 0.85);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #FFF;
+            font-weight: 600;
+        }
+        .video-body {
+            padding: 24px;
+        }
+        .video-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        .video-desc {
+            color: #CBD5E1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Press & Media Download Section */
+        .press-media-banner {
+            max-width: 1360px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .press-inner {
+            background: linear-gradient(135deg, rgba(22, 27, 39, 0.9) 0%, rgba(13, 16, 24, 0.98) 100%);
+            border: 1.5px solid rgba(229, 192, 88, 0.45);
+            border-radius: 16px;
+            padding: 50px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.85), var(--gold-glow);
+        }
+        .press-text h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        .press-text p {
+            color: #CBD5E1;
+            font-size: 1rem;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+        .press-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Lightbox modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.94);
+            backdrop-filter: blur(14px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .lightbox-modal.is-open { display: flex; }
+        .lightbox-content-box {
+            position: relative;
+            max-width: 1000px;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 75vh;
+            border-radius: 8px;
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 0 60px rgba(229, 192, 88, 0.35);
+            object-fit: contain;
+        }
+        .lightbox-info {
+            margin-top: 18px;
+            text-align: center;
+            color: #FFFFFF;
+            max-width: 700px;
+        }
+        .lightbox-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.35rem;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+        .lightbox-caption {
+            font-size: 0.95rem;
+            color: #CBD5E1;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -46px;
+            right: 0;
+            color: #FFFFFF;
+            font-size: 2.4rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: var(--gold-primary); }
+
+        /* Footer */
+        footer {
+            background: #080A10;
+            border-top: 1px solid rgba(229, 192, 88, 0.25);
+            padding: 70px 40px 30px;
+            position: relative;
+            z-index: 10;
+        }
+        .footer-grid {
+            max-width: 1360px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        @media (max-width: 980px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            header { padding: 14px 20px; }
+            nav { display: none; }
+            .mobile-toggle { display: block; }
+        }
+        .footer-bottom-bar {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.82rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ambient-aurora"></div>
+
+<!-- Top Pageant Alert Ticker -->
+<div class="pageant-ticker">
+    <span class="ticker-pill">👑 VISUAL ARCHIVES</span>
+    <span>Official High-Fashion Runway &amp; Coronation Photography</span>
+    <span style="opacity: 0.4; margin: 0 8px;">•</span>
+    <span>Ultra-HD Press Kit Available</span>
+    <span style="opacity: 0.4; margin: 0 8px;">•</span>
+    <a href="index.html#register" style="color: var(--gold-light); text-decoration: underline; font-weight: 800;">Register for 2026 Pageant</a>
+</div>
+
+<!-- Sticky Luxury Glass Header -->
+<header id="site-header">
+    <a href="index.html" class="brand">
+        <div class="brand-logo-wrap">
+            <span class="brand-crown-icon">👑</span>
+            <img src="https://indievogues.com/wp-content/uploads/2025/04/Indie-vogues-Logo-1024x1024-1.png" alt="IndieVogues Pageant Crest">
+        </div>
+        <div class="brand-text">
+            <span class="brand-name">IndieVogues</span>
+            <span class="brand-tag">Miss &amp; Mrs. World India</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#categories">Divisions</a>
+        <a href="gallery.html" class="active">Runway Gallery</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="about.html">About Us</a>
+        <a href="music.html">Music &amp; Media</a>
+        <a href="index.html#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+        <a href="index.html#register" class="btn-pageant-gold" style="padding: 10px 24px; font-size: 0.8rem;">Register 2026</a>
+        <button class="mobile-toggle" id="menu-toggle" aria-label="Open Menu">☰</button>
+    </div>
+</header>
+
+<!-- Mobile Navigation Backdrop Overlay -->
+<div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobile-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(229,192,88,0.25);">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.1rem;">👑</span>
+            <span style="font-family: 'Cinzel', serif; color: #FFF1C5; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.1em;">INDIEVOGUES</span>
+        </div>
+        <button class="drawer-close" id="drawer-close" aria-label="Close Menu" style="line-height: 1;">&times;</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="index.html#categories">Competition Divisions</a>
+    <a href="gallery.html" style="color: var(--gold-primary);">Runway Gallery</a>
+    <a href="sponsors.html">Sponsors &amp; Partners</a>
+    <a href="about.html">About IndieVogues</a>
+    <a href="music.html">Music &amp; Media</a>
+    <a href="index.html#faq">Audition FAQ</a>
+    <a href="index.html#register" class="btn-pageant-gold" style="text-align: center; margin-top: 14px; padding: 12px;">Register Now 👑</a>
+</div>
+
+<!-- Hero Section -->
+<section class="gallery-hero">
+    <div class="hero-badge">
+        <span>👑</span> Official Visual Chronicle
+    </div>
+    <h1 class="hero-title">Haute Couture &amp; <span>Coronation Gallery</span></h1>
+    <p class="hero-desc">
+        Immerse yourself in regal grandeur, iconic catwalk presentations, and crowning triumphs from IndieVogues international pageantry and couture fashion weeks.
+    </p>
+
+    <!-- Stats Bar -->
+    <div class="gallery-stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Runway Editions</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Couture Designers</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">1,000+</div>
+            <div class="stat-label">Crowning Moments</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4K</div>
+            <div class="stat-label">Ultra-HD Archives</div>
+        </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-nav">
+        <button class="filter-btn active" data-filter="all">🌟 All Exhibitions</button>
+        <button class="filter-btn" data-filter="pageant">👑 Pageant &amp; Crowns</button>
+        <button class="filter-btn" data-filter="runway">✨ Haute Couture Runway</button>
+        <button class="filter-btn" data-filter="gala">💎 Red Carpet Gala</button>
+        <button class="filter-btn" data-filter="editorial">📸 Editorial &amp; Studio</button>
+    </div>
+</section>
+
+<!-- Masonry Photo Grid -->
+<main class="gallery-container" id="gallery-grid">
+    <!-- Card 1: Miss World India Coronation -->
+    <div class="gallery-card" data-category="pageant" data-title="Miss World India Coronation Gala" data-caption="National crowning moment amidst royal cheers, golden tiara handover, and global ambassador proclamation.">
+        <img src="assets/images/pageant-hero.jpg" alt="Miss World India Coronation Gala">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Coronation</span>
+                <span class="overlay-edition">National Finale</span>
+            </div>
+            <h3 class="overlay-title">Miss World India Coronation</h3>
+            <p class="overlay-caption">The historic handover of the emerald-crested diamond tiara on the grand stage.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 2: National Grand Finale Podium -->
+    <div class="gallery-card" data-category="runway" data-title="National Grand Finale Podium" data-caption="The celebratory podium presentation honoring titleholders, runners-up, and continental finalists in bespoke couture gowns.">
+        <img src="assets/images/pageant-finalists.jpg" alt="Grand Finale Podium Finalists">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Runway Podium</span>
+                <span class="overlay-edition">All-India Finals</span>
+            </div>
+            <h3 class="overlay-title">Grand Finale Podium &amp; Queens</h3>
+            <p class="overlay-caption">Winners and zonal queens standing united in solidarity and sisterhood.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 3: Mrs World India Regal Crowning -->
+    <div class="gallery-card" data-category="pageant" data-title="Mrs. World India Regal Crowning" data-caption="Celebrating exemplary married women, mothers, and visionary entrepreneurs taking the world crown.">
+        <img src="assets/images/mrs-india-queen.jpg" alt="Mrs World India Queen Crowning">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Coronation</span>
+                <span class="overlay-edition">Mrs. World India</span>
+            </div>
+            <h3 class="overlay-title">Mrs. World India Regal Crowning</h3>
+            <p class="overlay-caption">A tribute to grace, perseverance, and timeless modern Indian womanhood.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 4: Metropolitan Haute Couture Showcase -->
+    <div class="gallery-card" data-category="runway" data-title="Metropolitan Haute Couture Showcase" data-caption="Avant-garde metallic textures, silk organza, and artisanal embroidery taking over the Mumbai runway.">
+        <img src="https://indievogues.com/wp-content/uploads/2025/12/fashTrends.jpg" alt="Metropolitan Haute Couture Showcase">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Haute Couture</span>
+                <span class="overlay-edition">Fashion Week</span>
+            </div>
+            <h3 class="overlay-title">Metropolitan Couture Runway</h3>
+            <p class="overlay-caption">Daring cuts and bespoke hand-embellished evening wear on the catwalk.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 5: Artisanal Grandeur Walk -->
+    <div class="gallery-card" data-category="runway" data-title="Artisanal Grandeur Walk" data-caption="Traditional Indian textiles fused with contemporary silhouettes in an immersive runway sequence.">
+        <img src="https://indievogues.com/wp-content/uploads/2025/05/87061482.webp" alt="Artisanal Grandeur Walk">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Runway</span>
+                <span class="overlay-edition">Designer Showcase</span>
+            </div>
+            <h3 class="overlay-title">Artisanal Grandeur Catwalk</h3>
+            <p class="overlay-caption">Masterful draping and heritage handlooms reimagined for international runways.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 6: Dusk Glamour Evening Wear -->
+    <div class="gallery-card" data-category="editorial" data-title="Dusk Glamour Atelier Collection" data-caption="High-fashion boutique showcase capturing twilight hues, velvet drapes, and crystal embellishments.">
+        <img src="https://indievogues.com/wp-content/uploads/2025/05/elegant-evening-dresses-displayed-in-boutique-window-at-dusk-photo.jpeg" alt="Atelier Evening Dresses">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Editorial</span>
+                <span class="overlay-edition">Atelier Series</span>
+            </div>
+            <h3 class="overlay-title">Dusk Glamour Atelier</h3>
+            <p class="overlay-caption">Curated gowns for national evening gown preliminary rounds.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 7: Golden Tiara & Jewelry Craftsmanship -->
+    <div class="gallery-card" data-category="gala" data-title="Royal Red Carpet VIP Gala" data-caption="Celebrity jury, fashion luminaries, and royal delegates gathering for the annual coronation banquet.">
+        <img src="assets/images/pageant-hero.jpg" style="filter: brightness(0.9) contrast(1.1);" alt="Royal Red Carpet VIP Gala">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Red Carpet</span>
+                <span class="overlay-edition">VIP Reception</span>
+            </div>
+            <h3 class="overlay-title">Royal Red Carpet Reception</h3>
+            <p class="overlay-caption">International dignitaries and high-fashion critics honoring the newly crowned queens.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 8: Crown Journey Editorial -->
+    <div class="gallery-card" data-category="editorial" data-title="Crown Chronicles Magazine Feature" data-caption="Official editorial portrait session capturing the poise and intellect of the reigning ambassadors.">
+        <img src="assets/images/mrs-india-queen.jpg" style="filter: sepia(0.15) contrast(1.05);" alt="Crown Chronicles Magazine Feature">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Editorial</span>
+                <span class="overlay-edition">Cover Shoot</span>
+            </div>
+            <h3 class="overlay-title">Crown Chronicles Cover Shoot</h3>
+            <p class="overlay-caption">Exclusive magazine spread documenting leadership initiatives and charitable missions.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+
+    <!-- Card 9: Finale Curtain Call -->
+    <div class="gallery-card" data-category="pageant" data-title="Grand Finale Golden Confetti Shower" data-caption="The emotional climax as golden confetti rains over the auditorium during the official titleholder sash handover.">
+        <img src="assets/images/pageant-finalists.jpg" style="filter: brightness(1.05);" alt="Golden Confetti Finale">
+        <div class="gallery-overlay">
+            <div class="overlay-meta">
+                <span class="overlay-category">Coronation</span>
+                <span class="overlay-edition">Grand Finale</span>
+            </div>
+            <h3 class="overlay-title">Golden Confetti Coronation</h3>
+            <p class="overlay-caption">Tears of joy and standing ovations as the 2025 royal court is officially declared.</p>
+            <span class="overlay-action">Click to Expand &rarr;</span>
+        </div>
+    </div>
+</main>
+
+<!-- Featured Runway Highlights & Video Reels -->
+<section class="video-showcase-section">
+    <div class="section-header-center">
+        <span class="section-tag">Cinematic Visuals</span>
+        <h2 class="section-title">Runway Highlights &amp; Video Reels</h2>
+    </div>
+
+    <div class="video-grid">
+        <!-- Video 1 -->
+        <div class="video-card">
+            <div class="video-thumbnail-wrap">
+                <img src="assets/images/pageant-hero.jpg" alt="Official Aftermovie Preview">
+                <div class="video-play-btn" onclick="openVideoDemo('National Coronation Aftermovie')">&#9658;</div>
+                <span class="video-duration">03:45</span>
+            </div>
+            <div class="video-body">
+                <h3 class="video-title">National Coronation Gala Aftermovie</h3>
+                <p class="video-desc">Experience the symphony of lights, thunderous applause, and crowning moments that crowned India's foremost queen.</p>
+            </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+            <div class="video-thumbnail-wrap">
+                <img src="assets/images/pageant-finalists.jpg" alt="Couture Walk Preview">
+                <div class="video-play-btn" onclick="openVideoDemo('Haute Couture Grand Catwalk')">&#9658;</div>
+                <span class="video-duration">04:12</span>
+            </div>
+            <div class="video-body">
+                <h3 class="video-title">Haute Couture Grand Catwalk Sequence</h3>
+                <p class="video-desc">Step-by-step runway choreography, artisanal luxury fabric displays, and high-fashion music synchrony.</p>
+            </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card">
+            <div class="video-thumbnail-wrap">
+                <img src="assets/images/mrs-india-queen.jpg" alt="Backstage Diary Preview">
+                <div class="video-play-btn" onclick="openVideoDemo('Backstage Grooming Diary')">&#9658;</div>
+                <span class="video-duration">02:50</span>
+            </div>
+            <div class="video-body">
+                <h3 class="video-title">Behind the Velvet Ropes: Grooming Diary</h3>
+                <p class="video-desc">Go behind the scenes into the makeup suites, runway masterclasses, and motivational sessions of our finalists.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Press & Media Accreditation Download Section -->
+<section class="press-media-banner">
+    <div class="press-inner">
+        <div class="press-text">
+            <h3>Accredited Press &amp; Media Kit</h3>
+            <p>Are you a journalist, fashion editor, or media agency covering IndieVogues Miss &amp; Mrs. World India 2026? Download our high-resolution photo archives, editorial assets, and official branding pack.</p>
+        </div>
+        <div class="press-actions">
+            <button class="btn-pageant-gold" onclick="alert('IndieVogues High-Res Press Kit download initiated. For editorial clearances, contact press@indievogues.com');" style="padding: 14px 30px; font-size: 0.85rem;">
+                📥 Download Press Kit (4K)
+            </button>
+            <a href="https://api.whatsapp.com/send?phone=918907861233&text=Hi%20IndieVogues,%20we%20are%20requesting%20Media%20Accreditation%20for%20Pageant%202026" target="_blank" class="btn-pageant-glass" style="padding: 14px 26px; font-size: 0.85rem;">
+                Press Accreditation WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightbox">
+    <div class="lightbox-content-box">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close Preview">&times;</button>
+        <img src="" alt="Enlarged Exhibition Preview" class="lightbox-img" id="lightbox-img">
+        <div class="lightbox-info">
+            <h3 class="lightbox-title" id="lightbox-title">Exhibition Title</h3>
+            <p class="lightbox-caption" id="lightbox-caption">Exhibition caption details.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Luxury Footer -->
+<footer>
+    <div class="footer-grid">
+        <!-- Brand Summary -->
+        <div>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: #FFFFFF; margin-bottom: 16px;">IndieVogues <span style="color: var(--gold-primary);">World India</span></h3>
+            <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
+                <strong>IndieVogues Entertainment (OPC) Pvt. Ltd.</strong> is the confluence of art, elegance, and empowerment—uniting haute couture fashion, majestic pageantry, music, and media under one radiant crown.
+            </p>
+            <div style="display: flex; gap: 16px;">
+                <a href="https://www.instagram.com/indievogues_worldindiapageant/#" target="_blank" rel="noopener" style="color: var(--gold-primary); font-weight: 700; text-decoration: none;">Instagram</a>
+                <span style="color: #555;">•</span>
+                <a href="https://www.facebook.com/profile.php?id=61577059983028" target="_blank" rel="noopener" style="color: var(--gold-primary); font-weight: 700; text-decoration: none;">Facebook</a>
+                <span style="color: #555;">•</span>
+                <a href="https://www.youtube.com/@indieVoguesfashion" target="_blank" rel="noopener" style="color: var(--gold-primary); font-weight: 700; text-decoration: none;">YouTube</a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+            <h4 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #FFFFFF; margin-bottom: 18px; text-transform: uppercase;">Quick Links</h4>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                <li><a href="index.html" style="color: #CBD5E1; text-decoration: none;">Home</a></li>
+                <li><a href="about.html" style="color: #CBD5E1; text-decoration: none;">About Us</a></li>
+                <li><a href="gallery.html" style="color: var(--gold-primary); text-decoration: none; font-weight: 700;">Runway Gallery</a></li>
+                <li><a href="sponsors.html" style="color: #CBD5E1; text-decoration: none;">Sponsors</a></li>
+                <li><a href="music.html" style="color: #CBD5E1; text-decoration: none;">Music &amp; Media</a></li>
+            </ul>
+        </div>
+
+        <!-- Divisions -->
+        <div>
+            <h4 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #FFFFFF; margin-bottom: 18px; text-transform: uppercase;">Divisions</h4>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                <li><a href="index.html#register" style="color: #CBD5E1; text-decoration: none;">Miss World India 2026</a></li>
+                <li><a href="index.html#register" style="color: #CBD5E1; text-decoration: none;">Mrs. World India 2026</a></li>
+                <li><a href="https://indievogues.com/events/" target="_blank" style="color: #CBD5E1; text-decoration: none;">Events &amp; Auditions</a></li>
+                <li><a href="https://indievogues.com/privacy-policy/" target="_blank" style="color: #CBD5E1; text-decoration: none;">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <!-- Corporate Concierge -->
+        <div>
+            <h4 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #FFFFFF; margin-bottom: 18px; text-transform: uppercase;">Media Desk</h4>
+            <p style="color: #CBD5E1; font-size: 0.9rem; margin-bottom: 6px;">Editorial &amp; Media Hotline:</p>
+            <p style="color: var(--gold-primary); font-size: 1.2rem; font-weight: 800; margin-bottom: 14px;">+91 8907861233</p>
+            <p style="color: #CBD5E1; font-size: 0.9rem; margin-bottom: 16px;">info@indievogues.com</p>
+            <a href="https://api.whatsapp.com/send?phone=918907861233&text=Hi%20IndieVogues,%20we%20have%20an%20editorial%20or%20photo%20inquiry" target="_blank" class="btn-pageant-glass" style="width: 100%; justify-content: center; padding: 10px 18px; font-size: 0.8rem;">
+                WhatsApp Media Desk
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+        <p>&copy; 2026 IndieVogues Entertainment (OPC) Pvt. Ltd. All Rights Reserved. Haute Couture &amp; Coronation Visual Archives.</p>
+        <p style="color: var(--gold-primary);">Where Passion Becomes Purpose 👑</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile Drawer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const drawerClose = document.getElementById('drawer-close');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+
+    if (menuToggle && mobileDrawer) {
+        menuToggle.addEventListener('click', () => {
+            mobileDrawer.classList.add('open');
+        });
+    }
+    if (drawerClose && mobileDrawer) {
+        drawerClose.addEventListener('click', () => {
+            mobileDrawer.classList.remove('open');
+        });
+    }
+
+    // Category Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryCards = document.querySelectorAll('.gallery-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+            galleryCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Lightbox modal functionality
+    const modal = document.getElementById('lightbox');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    galleryCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const img = card.querySelector('img');
+            const title = card.getAttribute('data-title') || 'Exhibition Image';
+            const caption = card.getAttribute('data-caption') || '';
+            
+            modalImg.src = img.src;
+            modalTitle.textContent = title;
+            modalCaption.textContent = caption;
+            modal.classList.add('is-open');
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('is-open');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('is-open');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            modal.classList.remove('is-open');
+        }
+    });
+
+    // Mobile Drawer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const drawerClose = document.getElementById('drawer-close');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+
+    function openMobileDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.add('open');
+        if (drawerBackdrop) drawerBackdrop.classList.add('open', 'is-active');
+        document.body.classList.add('drawer-open');
+    }
+
+    function closeMobileDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.remove('open');
+        if (drawerBackdrop) drawerBackdrop.classList.remove('open', 'is-active');
+        document.body.classList.remove('drawer-open');
+    }
+
+    if (menuToggle) menuToggle.addEventListener('click', openMobileDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeMobileDrawer);
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileDrawer);
+
+    document.querySelectorAll('.mobile-drawer a').forEach(link => {
+        link.addEventListener('click', closeMobileDrawer);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileDrawer();
+    });
+
+    function openVideoDemo(videoName) {
+        alert(`Opening ${videoName} in HD Cinema Player. Stream preview starting shortly!`);
+    }
+</script>
+
+</body>
+</html>
